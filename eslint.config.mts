@@ -8,11 +8,11 @@ import prettier from 'eslint-plugin-prettier';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default [
-  js.configs.recommended,              // JS base
+  js.configs.recommended,              // Regras base JS
   ...tseslint.configs.recommended,     // TypeScript
   pluginReact.configs.recommended,     // React
   reactHooks.configs.recommended,      // React Hooks
-  jsxA11y.flatConfigs.recommended,     // Acessibilidade (jsx-a11y)
+  jsxA11y.flatConfigs.recommended,     // Acessibilidade
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     languageOptions: {
@@ -45,11 +45,13 @@ export default [
       // Prettier
       'prettier/prettier': ['error'],
 
-      // Acessibilidade
-      'jsx-a11y/alt-text': ['error', {
-        elements: ['img', 'object', 'area', 'input[type="image"]'],
-        img: ['Image'], // suporte a <Image /> do Next.js
-      }],
+      // Acessibilidade (principais regras)
+      'jsx-a11y/alt-text': 'error',
+      'jsx-a11y/anchor-is-valid': 'error',
+      'jsx-a11y/label-has-associated-control': 'error',
+      'jsx-a11y/no-static-element-interactions': 'warn',
+      'jsx-a11y/heading-has-content': 'error',
+      'jsx-a11y/no-noninteractive-tabindex': 'warn',
     },
     settings: {
       react: {

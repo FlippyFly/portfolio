@@ -4,6 +4,8 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    font-family: Inter, sans-serif;
+    list-style: none;
   }
 
   body {
@@ -18,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
 export default GlobalStyle;
 
 export const Container = styled.div`
+  padding: 0 16px;
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
