@@ -1,11 +1,18 @@
+// eslint.config.mts
 import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import prettier from 'eslint-plugin-prettier';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default [
+  js.configs.recommended,              // JS base
+  ...tseslint.configs.recommended,     // TypeScript
+  pluginReact.configs.recommended,     // React
+  reactHooks.configs.recommended,      // React Hooks
+  jsxA11y.flatConfigs.recommended,     // Acessibilidade (jsx-a11y)
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     languageOptions: {
@@ -13,15 +20,15 @@ export default [
       sourceType: 'module',
       globals: {
         ...globals.browser,
-        ...globals.node, // Caso tenha código para Node também
+        ...globals.node,
       },
     },
     plugins: {
-      js,
       '@typescript-eslint': tseslint.plugin,
       react: pluginReact,
       'react-hooks': reactHooks,
       prettier,
+      'jsx-a11y': jsxA11y,
     },
     rules: {
       // React Hooks
@@ -30,24 +37,24 @@ export default [
 
       // React
       'react/prop-types': 'off',
-      'react/react-in-jsx-scope': 'off', // seguro para Next.js ou React 17+
+      'react/react-in-jsx-scope': 'off',
 
       // TypeScript
       '@typescript-eslint/explicit-module-boundary-types': 'off',
 
       // Prettier
-      'prettier/prettier': [
-        'error',
-      ],
+      'prettier/prettier': ['error'],
+
+      // Acessibilidade
+      'jsx-a11y/alt-text': ['error', {
+        elements: ['img', 'object', 'area', 'input[type="image"]'],
+        img: ['Image'], // suporte a <Image /> do Next.js
+      }],
     },
     settings: {
       react: {
-        version: 'detect', // Detecta versão do React automaticamente
+        version: 'detect',
       },
     },
   },
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.recommended,
-  reactHooks.configs.recommended,
 ];
