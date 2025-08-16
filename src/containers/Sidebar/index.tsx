@@ -1,15 +1,23 @@
 import Titulo from "../../components/Titulo/index.tsx"
+import Paragrafo from "../../components/Paragrafo/index.tsx"
+import Avatar from "../../components/Avatar/index.tsx"
+
+import {Descricao, BotaoTema, SidebarContainer } from "../Sidebar/styles.ts";
+
 
 const Sidebar = () => (
 <aside>
-  <img
-    src="https://github.com/FlippyFly.png"
-    alt="Foto de perfil de Felipe Almeida"
-    style={{ borderRadius: "50%", width: "128px", height: "128px" }}
-  />
+  <SidebarContainer>
+    <Avatar />
   <Titulo fontSize={20}>Felipe Almeida</Titulo>
-</aside>
+  <Paragrafo tipo="secundario" fontSize={16}>FlippyFly</Paragrafo>
+  <Descricao tipo="principal" fontSize={12}>
+    Desenvolvedor Front-end
+  </Descricao>
+  <BotaoTema>Trocar tema</BotaoTema>
+  </SidebarContainer>
 
+</aside>
 )
 
 export default Sidebar
