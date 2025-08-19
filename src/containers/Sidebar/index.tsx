@@ -4,8 +4,11 @@ import Avatar from "../../components/Avatar/index.tsx"
 
 import {Descricao, BotaoTema, SidebarContainer } from "../Sidebar/styles.ts";
 
+type Props = {
+  alternarTema: () => void;
+}
 
-const Sidebar = () => (
+const Sidebar = (props: Props) => (
 <aside>
   <SidebarContainer>
     <Avatar />
@@ -14,7 +17,7 @@ const Sidebar = () => (
   <Descricao tipo="principal" fontSize={12}>
     Desenvolvedor Front-end
   </Descricao>
-  <BotaoTema>Trocar tema</BotaoTema>
+  <BotaoTema onClick={props.alternarTema}>Trocar tema</BotaoTema>
   </SidebarContainer>
 
 </aside>
